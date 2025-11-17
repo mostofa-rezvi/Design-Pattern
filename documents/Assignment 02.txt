@@ -1,0 +1,34 @@
+public class PatientRecordService {
+
+    private static int recordIdCounter = 1000;
+
+    public void generateRecord(String department, String patientName) {
+        int recordId = generateRecordId();
+
+        System.out.println("Record ID: " + recordId);
+
+        if (department.equalsIgnoreCase("cardiology")) {
+            System.out.println("Cardiology Record for " + patientName);
+            System.out.println("Includes ECG, Blood Pressure, Cholesterol");
+        } else if (department.equalsIgnoreCase("neurology")) {
+            System.out.println("Neurology Record for " + patientName);
+            System.out.println("Includes MRI, Cognitive Assessment");
+        } else if (department.equalsIgnoreCase("orthopedics")) {
+            System.out.println("Orthopedics Record for " + patientName);
+            System.out.println("Includes X-ray, Bone Density Test");
+        } else {
+            System.out.println("Unknown department");
+        }
+    }
+
+    private int generateRecordId() {
+        return recordIdCounter++;
+    }
+
+    public static void main(String[] args) {
+        PatientRecordService service = new PatientRecordService();
+        service.generateRecord("cardiology", "Rahim");
+        System.out.println();
+        service.generateRecord("neurology", "Karim");
+    }
+}
